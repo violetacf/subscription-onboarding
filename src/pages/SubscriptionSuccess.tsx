@@ -5,9 +5,8 @@ export default function SubscriptionSuccess() {
 
   return (
     <div>
-      <h2>Congrats! You are now a subscriber!</h2>
-      <button onClick={() => navigate("/plan")}>Back</button>
-      <button onClick={() => navigate("/")}>Start over</button>
+      <h2>Congrats! You're now a subscriber!</h2>
+      <p>Explore your membership now.</p>
       <hr />
       <button onClick={() => navigate("/tech-test-notes")}>
         View Tech Test Notes
