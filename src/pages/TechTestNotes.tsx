@@ -20,6 +20,12 @@ export default function TechTestNotes() {
           Created mock routes in <code>App.tsx</code> for the subscription steps
           and Tech Test Notes page.
         </li>
+        <li>Added the server.js file and tested out the api in postman</li>
+        <li>
+          Implemented api calls in ConnectAccount, AccountVerification,
+          PlanSelection, SubscriptionSuccess and all the fields needed according
+          to the requirements
+        </li>
       </ol>
 
       <hr />
@@ -32,9 +38,8 @@ export default function TechTestNotes() {
       <button onClick={() => navigate("/verify")}>Get Verified!</button>
       <button onClick={() => navigate("/plan")}>Choose your plan</button>
       <button onClick={() => navigate("/congrats")}>
-        Congrats! Subscriber
+        Congrats! You're now a subscriber!
       </button>
-      <button onClick={() => navigate("/")}>Start Over</button>
     </div>
   );
 }
