@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* min-height: 100vh; */
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  /* margin: 0 auto; */
+}
+
+.header {
+  width: 0;
+}
+
+.backButton {
+}
+
+.mainContentFlex {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "benefitsColumn headingColumn"
+    "benefitsColumn formColumn";
+  gap: 30px;
+  align-items: start;
+  flex-grow: 1;
+}
+
+.benefitsBlock {
+  grid-area: benefitsColumn;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.headingBlock {
+  grid-area: headingColumn;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.formBlock {
+  grid-area: formColumn;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+@media (max-width: 767px) {
+  .mainContentFlex {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    grid-template-columns: unset;
+    grid-template-areas: unset;
+  }
+
+  .headingBlock {
+    width: 100%;
+    order: 1;
+  }
+  .benefitsBlock {
+    order: 2;
+  }
+  .formBlock {
+    order: 3;
+  }
+}

@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+.connectHeading,
+.benefitsWrapper,
+.emailFormWrapper,
+.agreementTextWrapper {
+  flex: 1 1 calc(50% - 15px);
+  min-width: 300px;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.benefitsWrapper {
+  order: 1;
+}
+.connectHeading {
+  order: 2;
+}
+.agreementTextWrapper {
+  order: 3;
+}
+.emailFormWrapper {
+  order: 4;
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .connectHeading {
+    order: 1;
+  }
+  .benefitsWrapper {
+    order: 2;
+  }
+  .emailFormWrapper {
+    order: 3;
+  }
+  .agreementTextWrapper {
+    order: 4;
+  }
+}
