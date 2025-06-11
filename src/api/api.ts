@@ -1,9 +1,15 @@
 const API_BASE = "http://localhost:8080/api";
 
-export async function sendEmailValidationCode(email: string): Promise<void> {
-  const response = await fetch(
-    `${API_BASE}/send-email?email=${encodeURIComponent(email)}`
-  );
+export async function sendEmailValidationCode(
+  email: string,
+  receiveOffers?: boolean
+): Promise<void> {
+  let url = `${API_BASE}/send-email?email=${encodeURIComponent(email)}`;
+  if (receiveOffers !== undefined) {
+    url += `&receiveOffers=${receiveOffers}`;
+  }
+
+  const response = await fetch(url);
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.error || "Failed to send validation code");
