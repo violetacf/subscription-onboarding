@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 export default function TechTestNotes() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ export default function TechTestNotes() {
           PlanSelection, SubscriptionSuccess and all the fields needed according
           to the requirements
         </li>
+        <li>Extract different components to their own files</li>
       </ol>
 
       <hr />
@@ -34,12 +36,27 @@ export default function TechTestNotes() {
         In case you want to check again one of the pages, use the buttons below:
       </p>
 
-      <button onClick={() => navigate("/")}>Connect Your Account</button>
-      <button onClick={() => navigate("/verify")}>Get Verified!</button>
-      <button onClick={() => navigate("/plan")}>Choose your plan</button>
-      <button onClick={() => navigate("/congrats")}>
-        Congrats! You're now a subscriber!
-      </button>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          padding: "20px",
+        }}
+      >
+        <Button onClick={() => navigate("/")} variant="primary">
+          Connect Your Account
+        </Button>
+        <Button onClick={() => navigate("/verify")} variant="primary">
+          Get Verified!
+        </Button>
+        <Button onClick={() => navigate("/plan")} variant="primary">
+          Choose your plan
+        </Button>
+        <Button onClick={() => navigate("/congrats")} variant="primary">
+          Congrats! You're now a subscriber!
+        </Button>
+      </div>
     </div>
   );
 }
