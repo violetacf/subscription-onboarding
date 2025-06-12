@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/components/Checkbox.module.css";
 
 interface CheckboxProps {
   label: string;
@@ -14,17 +15,16 @@ const Checkbox: React.FC<CheckboxProps> = ({
   disabled = false,
 }) => {
   return (
-    <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => onChange(e.target.checked)}
-          disabled={disabled}
-        />
-        {label}
-      </label>
-    </div>
+    <label className={styles.checkboxContainer}>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        disabled={disabled}
+        className={styles.checkboxInput}
+      />
+      {label}
+    </label>
   );
 };
 

@@ -1,0 +1,45 @@
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.checkboxInput {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-white);
+  border-radius: 4px;
+  background-color: transparent;
+  margin-right: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkboxInput:checked {
+  background-color: transparent;
+}
+
+.checkboxInput:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--color-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkboxInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .checkboxContainer {
+    font-size: 0.6em;
+  }
+}
