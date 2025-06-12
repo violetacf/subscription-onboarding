@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Benefits from "../components/Benefits";
 import AgreementText from "../components/AgreementText";
 import EmailConnectForm from "../components/EmailConnectForm";
-import styles from "../styles/ConnectAccount.module.css";
+import styles from "../styles/pages/ConnectAccount.module.css";
 
 export default function ConnectAccount() {
   const navigate = useNavigate();
