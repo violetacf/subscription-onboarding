@@ -1,0 +1,54 @@
+/* Container for the entire benefits list */
+.benefitsContainer {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.checkCircleIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.checkCircleIcon .benefitIcon {
+  font-size: 1.3em;
+  color: var(--color-white);
+  margin-left: 2px;
+}
+
+.benefitIcon {
+  font-size: 1.2em;
+  flex-shrink: 0;
+}
+
+.benefitItem:nth-child(odd) {
+  background-image: linear-gradient(
+    to right,
+    var(--color-gradient-benefit-left),
+    var(--color-gradient-benefit-right)
+  );
+}
+
+.benefitItem p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .benefitsContainer {
+    margin-top: 0;
+  }
+}
