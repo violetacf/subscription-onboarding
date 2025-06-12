@@ -3,6 +3,8 @@ import { useState } from "react";
 import Button from "../components/Button";
 import FooterLegalLinks from "../components/FooterLegalLinks";
 import SubscriptionPlanForm from "../components/SubscriptionPlanForm";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import styles from "../styles/pages/PlanSelection.module.css";
 
 export default function PlanSelection() {
   const navigate = useNavigate();
@@ -14,24 +16,14 @@ export default function PlanSelection() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "20px",
-        gap: "40px",
-        margin: "0 auto",
-      }}
-    >
+    <div className={styles.container}>
       <Button
         onClick={() => navigate("/")}
         disabled={pageLoading}
-        variant="secondary"
-        style={{ alignSelf: "flex-start" }}
-      >
-        {" < "}
-      </Button>
+        variant="back"
+        className={styles.backButton}
+        icon={faChevronLeft}
+      />
       <SubscriptionPlanForm
         onPlanSelectedAndProceed={handlePlanSelectionProceed}
         isPageLoading={pageLoading}
