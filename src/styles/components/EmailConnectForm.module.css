@@ -1,0 +1,14 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.errorText {
+  color: var(--color-error);
+  text-align: center;
+  width: 100%;
+}

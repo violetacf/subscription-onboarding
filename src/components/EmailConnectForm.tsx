@@ -3,6 +3,7 @@ import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
 import Button from "./Button";
 import { sendEmailValidationCode } from "../api/api";
+import styles from "../styles/components/EmailConnectForm.module.css";
 
 interface EmailConnectFormProps {
   onSuccess: (email: string) => void;
@@ -45,20 +46,10 @@ const EmailConnectForm: React.FC<EmailConnectFormProps> = ({ onSuccess }) => {
 
   const handleReceiveOffersChange = (isChecked: boolean) => {
     setReceiveOffers(isChecked);
-    // console.log("Receive Offers:", isChecked);
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-        alignItems: "center",
-        width: "100%",
-        boxSizing: "border-box",
-      }}
-    >
+    <div className={styles.formContainer}>
       <TextInput
         value={email}
         onChange={setEmail}
@@ -66,11 +57,7 @@ const EmailConnectForm: React.FC<EmailConnectFormProps> = ({ onSuccess }) => {
         disabled={loading}
         type="email"
       />
-      {error && (
-        <p style={{ color: "red", textAlign: "center", width: "100%" }}>
-          {error}
-        </p>
-      )}
+      {error && <p className={styles.errorText}>{error}</p>}
       <Checkbox
         label="Send Me Offers, News, and Fun Stuff!"
         checked={receiveOffers}
@@ -81,7 +68,6 @@ const EmailConnectForm: React.FC<EmailConnectFormProps> = ({ onSuccess }) => {
         onClick={handleSendVerificationEmail}
         disabled={loading}
         variant="primary"
-        color="#8a2be2"
       >
         {loading ? "Sending..." : "Connect"}
       </Button>
