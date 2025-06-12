@@ -1,19 +1,33 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import styles from "../styles/pages/TechTestNotes.module.css";
 
 export default function TechTestNotes() {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h1>Tech Test Notes</h1>
-      <ol>
-        <li>Created the React app.</li>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Tech Test Notes</h1>
+      <p>
+        Thank you for taking the time to look at my work, I have enjoyed working
+        on this project
+      </p>
+      <ol className={styles.list}>
+        <li>Created the React app</li>
         <li>
           Organized the project structure with folders:
-          <ul>
+          <ul className={styles.subList}>
+            <li>
+              <b>api/</b> for api calls
+            </li>
+            <li>
+              <b>components/</b> for components
+            </li>
             <li>
               <b>pages/</b> for route-level components (happy path steps)
+            </li>
+            <li>
+              <b>styles/</b> for component and pages styles
             </li>
           </ul>
         </li>
@@ -27,7 +41,8 @@ export default function TechTestNotes() {
           PlanSelection, SubscriptionSuccess and all the fields needed according
           to the requirements
         </li>
-        <li>Extract different components to their own files</li>
+        <li>Extracted different components to their own files</li>
+        <li>Finally the most fun: worked on styling!</li>
       </ol>
 
       <hr />
@@ -36,14 +51,7 @@ export default function TechTestNotes() {
         In case you want to check again one of the pages, use the buttons below:
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          padding: "20px",
-        }}
-      >
+      <div className={styles.buttonGroup}>
         <Button onClick={() => navigate("/")} variant="primary">
           Connect Your Account
         </Button>
