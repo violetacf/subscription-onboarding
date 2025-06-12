@@ -27,6 +27,9 @@
   color: var(--color-purple-most-darkest);
   border: 1px solid var(--color-light-purple);
   font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .secondary {
@@ -34,6 +37,9 @@
   color: var(--color-purple-most-darkest);
   border: 1px solid var(--color-yellow);
   font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .link {
@@ -62,4 +68,21 @@
 
 .iconOnly .icon {
   color: var(--color-purple-most-darkest);
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--color-link-blue);
+  transform: scale(0);
+  animation: ripple 600ms ease-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
