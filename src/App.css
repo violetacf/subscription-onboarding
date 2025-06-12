@@ -20,6 +20,10 @@
   --color-gradient-benefit-left: #5b4b6e;
   --color-gradient-benefit-right: #372d56;
   --color-error: #ff0000;
+  --gradient-color-1: #eabb9e;
+  --gradient-color-2: #da7878;
+  --gradient-color-3: #bc83b1;
+  --gradient-color-4: #579ac4;
 }
 
 html,

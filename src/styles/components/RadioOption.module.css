@@ -25,10 +25,10 @@
     ),
     linear-gradient(
       to right,
-      rgb(234, 187, 158),
-      rgb(218, 120, 120),
-      rgb(188, 131, 177),
-      rgb(87, 154, 196)
+      var(--gradient-color-1),
+      var(--gradient-color-2),
+      var(--gradient-color-3),
+      var(--gradient-color-4)
     );
 
   background-origin: padding-box, border-box;
