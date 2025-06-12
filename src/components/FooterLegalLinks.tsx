@@ -1,31 +1,41 @@
 import React from "react";
+import Button from "./Button";
+import styles from "../styles/components/FooterLegalLinksAndAgreementText.module.css";
 
 const FooterLegalLinks: React.FC = () => {
+  const openLink = () => {
+    window.open(
+      "https://company.gamehouse.com/privacy-statement",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
-      <a
-        href="https://company.gamehouse.com/privacy-statement"
-        target="_blank"
-        rel="noopener noreferrer"
+    <div className={styles.footer}>
+      <Button
+        onClick={() => openLink()}
+        variant="link"
+        className={styles.footerLink}
       >
         Privacy Policy
-      </a>
+      </Button>
       {" | "}
-      <a
-        href="https://company.gamehouse.com/privacy-statement"
-        target="_blank"
-        rel="noopener noreferrer"
+      <Button
+        onClick={() => openLink()}
+        variant="link"
+        className={styles.footerLink}
       >
         Terms of Service
-      </a>
+      </Button>
       {" | "}
-      <a
-        href="https://company.gamehouse.com/privacy-statement"
-        target="_blank"
-        rel="noopener noreferrer"
+      <Button
+        onClick={() => openLink()}
+        variant="link"
+        className={styles.footerLink}
       >
-        Restore Purchase
-      </a>
+        Restore <span className={styles.hideOnSmall}>Purchase</span>
+      </Button>
     </div>
   );
 };
