@@ -1,3 +1,18 @@
+.subscriptionPlanForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.subscriptionPlans {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
 .planContent {
   display: flex;
   flex-direction: column;
@@ -25,6 +40,10 @@
   width: 100%;
   padding-bottom: 10pt;
   padding-top: 10pt;
+}
+
+.per {
+  font-weight: normal;
 }
 
 .planBilled {
@@ -73,6 +92,35 @@
   display: none;
 }
 
+.errorText {
+  color: var(--color-error);
+}
+
+/* .saveTag {
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin-bottom: 0;
+} */
+
+.planCardContainer {
+  position: relative;
+}
+
+.saveTag {
+  background-color: var(--gradient-color-4);
+  color: var(--color-purple-most-darkest);
+  padding: 1px 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 6px 6px 0 0;
+  position: absolute;
+  top: -17px;
+  right: 20px;
+  white-space: nowrap;
+}
+
 @media (max-width: 600px) {
   .planContent {
     flex-direction: row;
@@ -102,10 +150,16 @@
     margin-top: 0;
     display: block;
     font-size: 0.7rem;
+    color: var(--gradient-color-4);
   }
   .planHeader {
     align-items: center;
-    margin-top: 50px;
-    margin-right: 10px;
+    margin-top: 52px;
+    margin-right: 5px;
+  }
+
+  .saveTag {
+    font-size: 0.6rem;
+    top: -11px;
   }
 }

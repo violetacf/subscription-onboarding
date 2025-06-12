@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getProducts, ProductsResponse, Product } from "../api/api";
 import RadioOption from "./RadioOption";
 import Button from "./Button";
-import styles from "../styles/pages/SubscriptionPlanForm.module.css";
+import styles from "../styles/components/SubscriptionPlanForm.module.css";
+import { formatCurrency } from "../utils/formatCurrency";
 
 interface DisplayProduct extends Product {
   id: string;
@@ -70,60 +71,59 @@ const SubscriptionPlanForm: React.FC<SubscriptionPlanFormProps> = ({
   const isDisabled = loading || isPageLoading;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-        width: "100%",
-        boxSizing: "border-box",
+    <form
+      className={styles.subscriptionPlanForm}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
       }}
     >
       <h1>Choose your plan</h1>
       {loading && <p>Loading plans...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
+      {error && <p className={styles.errorText}>{error}</p>}{" "}
       {products && (
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: "10px",
-          }}
-        >
+        <div className={styles.subscriptionPlans}>
           {productsArray.map((plan) => (
-            <RadioOption
-              key={plan.id}
-              value={plan.id}
-              checked={selectedPlanId === plan.id}
-              onChange={handlePlanChange}
-              name="plan"
-              disabled={isDisabled}
-              label={
-                <div className={styles.planContent}>
-                  <div className={styles.planHeader}>
-                    <h3 className={styles.planName}>
-                      {plan.name === "Monthly" ? "Monthly" : "Annual"}
-                    </h3>
-                    {plan.name !== "Monthly" && (
-                      <span className={styles.hideOnBig}>BEST VALUE</span>
-                    )}
+            <div key={plan.id} className={styles.planCardContainer}>
+              {plan.name !== "Monthly" && (
+                <div className={styles.saveTag}>Save 20%</div>
+              )}
+              <RadioOption
+                key={plan.id}
+                value={plan.id}
+                checked={selectedPlanId === plan.id}
+                onChange={handlePlanChange}
+                name="plan"
+                disabled={isDisabled}
+                label={
+                  <div className={styles.planContent}>
+                    <div className={styles.planHeader}>
+                      {plan.name !== "Monthly" && (
+                        <span className={styles.hideOnBig}>BEST VALUE</span>
+                      )}
+                      <h3 className={styles.planName}>
+                        {plan.name === "Monthly" ? "Monthly" : "Annual"}
+                      </h3>
+                    </div>
+                    <div className={styles.planDetails}>
+                      <p className={styles.planPrice}>
+                        {formatCurrency(Number(plan.price), plan.currency)}
+                        <span className={styles.per}>
+                          /{plan.name === "Monthly" ? "month" : "year"}
+                        </span>
+                      </p>
+                      <p className={styles.planBilled}>
+                        Billed{" "}
+                        {plan.name === "Monthly" ? "monthly" : "annually"}
+                      </p>
+                      <p className={styles.planTrial}>
+                        {plan.trial_days}-day free trial
+                      </p>
+                    </div>
                   </div>
-                  <div className={styles.planDetails}>
-                    <p className={styles.planPrice}>
-                      {plan.price} {plan.currency}/
-                      {plan.name === "Monthly" ? "month" : "year"}
-                    </p>
-                    <p className={styles.planBilled}>
-                      Billed {plan.name === "Monthly" ? "monthly" : "annually"}
-                    </p>
-                    <p className={styles.planTrial}>
-                      {plan.trial_days}-day free trial
-                    </p>
-                  </div>
-                </div>
-              }
-            />
+                }
+              />
+            </div>
           ))}
         </div>
       )}
@@ -133,10 +133,11 @@ const SubscriptionPlanForm: React.FC<SubscriptionPlanFormProps> = ({
         disabled={isDisabled || !selectedPlanId}
         variant="secondary"
         className={styles.trialButton}
+        type="submit"
       >
         Start my free trial!
       </Button>
-    </div>
+    </form>
   );
 };
 
