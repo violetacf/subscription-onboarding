@@ -1,0 +1,32 @@
+.textInput {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid (--color-link-blue);
+  border-radius: 8px;
+  font-size: 1.1em;
+  line-height: 1.5;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+@media (max-width: 600px) {
+  .textInput {
+    font-size: 0.85em;
+  }
+}
+
+.textInput:focus {
+  outline: none;
+  border-color: var(--color-link-blue);
+  box-shadow: 0 0 0 3px var(--color-link-blue);
+}
+
+.textInput:disabled {
+  background-color: var(--color-white);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.textInput::placeholder {
+  color: var(--color-top-right);
+}

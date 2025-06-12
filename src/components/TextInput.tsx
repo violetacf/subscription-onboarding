@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/components/TextInput.module.css";
 
 interface TextInputProps {
   value: string;
@@ -6,6 +7,7 @@ interface TextInputProps {
   placeholder?: string;
   disabled?: boolean;
   type?: React.HTMLInputTypeAttribute;
+  className?: string;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -14,6 +16,7 @@ const TextInput: React.FC<TextInputProps> = ({
   placeholder = "",
   disabled = false,
   type = "text",
+  className,
 }) => {
   return (
     <input
@@ -22,6 +25,7 @@ const TextInput: React.FC<TextInputProps> = ({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
+      className={`${styles.textInput} ${className || ""}`}
     />
   );
 };
