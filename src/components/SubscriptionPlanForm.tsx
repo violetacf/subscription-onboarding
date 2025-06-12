@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getProducts, ProductsResponse, Product } from "../api/api";
 import RadioOption from "./RadioOption";
 import Button from "./Button";
+import styles from "../styles/pages/SubscriptionPlanForm.module.css";
 
 interface DisplayProduct extends Product {
   id: string;
@@ -99,28 +100,39 @@ const SubscriptionPlanForm: React.FC<SubscriptionPlanFormProps> = ({
               name="plan"
               disabled={isDisabled}
               label={
-                <div>
-                  <h3>{plan.name === "Monthly" ? "Monthly" : "Annual"}</h3>
-                  <p>
-                    {plan.price} {plan.currency}/
-                    {plan.name === "Monthly" ? "month" : "year"}
-                  </p>
-                  <p>
-                    Billed {plan.name === "Monthly" ? "monthly" : "annually"}
-                  </p>
-                  <p>{plan.trial_days}-day free trial</p>
+                <div className={styles.planContent}>
+                  <div className={styles.planHeader}>
+                    <h3 className={styles.planName}>
+                      {plan.name === "Monthly" ? "Monthly" : "Annual"}
+                    </h3>
+                    {plan.name !== "Monthly" && (
+                      <span className={styles.hideOnBig}>BEST VALUE</span>
+                    )}
+                  </div>
+                  <div className={styles.planDetails}>
+                    <p className={styles.planPrice}>
+                      {plan.price} {plan.currency}/
+                      {plan.name === "Monthly" ? "month" : "year"}
+                    </p>
+                    <p className={styles.planBilled}>
+                      Billed {plan.name === "Monthly" ? "monthly" : "annually"}
+                    </p>
+                    <p className={styles.planTrial}>
+                      {plan.trial_days}-day free trial
+                    </p>
+                  </div>
                 </div>
               }
             />
           ))}
         </div>
       )}
-      <p>Cancel anytime.</p>
+      <p className={styles.cancelAnytime}>Cancel anytime.</p>
       <Button
         onClick={handleSubmit}
         disabled={isDisabled || !selectedPlanId}
-        variant="primary"
-        color="#f0a800"
+        variant="secondary"
+        className={styles.trialButton}
       >
         Start my free trial!
       </Button>
