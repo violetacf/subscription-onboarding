@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import CodeInput from "./CodeInput";
 import Button from "./Button";
 import { validateEmail, sendEmailValidationCode } from "../api/api";
-import styles from "./../styles/VerificationCodeForm.module.css";
+import styles from "./../styles/components/VerificationCodeForm.module.css";
 
 interface VerificationCodeFormProps {
   email: string;
@@ -98,7 +98,6 @@ const VerificationCodeForm: React.FC<VerificationCodeFormProps> = ({
 
   return (
     <div className={`${styles.container} ${className || ""}`}>
-      {" "}
       <CodeInput
         length={6}
         onComplete={setCode}
@@ -107,11 +106,12 @@ const VerificationCodeForm: React.FC<VerificationCodeFormProps> = ({
       />
       {error && <p className={styles.errorText}>{error}</p>}
       <div className={styles.resendSection}>
-        <p>Didn't get an email?</p>
+        <p className={styles.resendText}>Didn't get an email?</p>
         <Button
           onClick={handleResendCode}
           disabled={isDisabled || resendCooldown > 0}
           variant="link"
+          className={styles.resendButton}
         >
           {resendCooldown > 0
             ? `Resend Code (${resendCooldown}s)`
@@ -122,7 +122,6 @@ const VerificationCodeForm: React.FC<VerificationCodeFormProps> = ({
         onClick={handleVerifyCode}
         disabled={isDisabled || code.length !== 6}
         variant="primary"
-        color="#8a2be2"
         className={styles.verifyButton}
       >
         {loading ? "Verifying..." : "Verify"}

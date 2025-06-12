@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.errorText {
+  color: var(--color-error);
+}
+
+.resendSection {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.resendButton {
+  margin-left: 2px;
+  justify-content: flex-start;
+  width: 45%;
+}
+
+.resendText {
+  width: 55%;
+  margin-right: 4px;
+  text-align: end;
+}
+
+@media (max-width: 767px) {
+  .errorText {
+    order: 1;
+  }
+
+  .verifyButton {
+    margin-top: 40px;
+    order: 2;
+  }
+
+  .resendSection {
+    margin-top: 90px;
+    order: 3;
+  }
+
+  .resendText {
+    font-size: 0.6em;
+  }
+
+  .resendButton {
+    font-size: 0.6em;
+  }
+}
+
+@media (min-width: 768px) {
+  .errorText {
+    order: unset;
+  }
+
+  .resendSection {
+    order: unset;
+  }
+
+  .verifyButton {
+    order: unset;
+  }
+}
