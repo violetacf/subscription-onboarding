@@ -3,7 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Benefits from "../components/Benefits";
 import Button from "../components/Button";
 import VerificationCodeForm from "../components/VerificationCodeForm";
-import styles from "../styles/AccountVerification.module.css";
+import styles from "../styles/pages/AccountVerification.module.css";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function AccountVerification() {
   const navigate = useNavigate();
@@ -37,8 +38,9 @@ export default function AccountVerification() {
         <Button
           onClick={() => navigate("/")}
           disabled={pageLoading}
-          variant="secondary"
+          variant="back"
           className={styles.backButton}
+          icon={faArrowLeft}
         >
           Modify email
         </Button>
@@ -49,7 +51,7 @@ export default function AccountVerification() {
           <h1>Get Verified!</h1>
           <p>Enter the one time code we sent to:</p>
           {emailToDisplay ? (
-            <p>{emailToDisplay}</p>
+            <p className={styles.emailToDisplay}>{emailToDisplay}</p>
           ) : (
             <p style={{ textAlign: "center", color: "gray" }}>
               Loading email...
