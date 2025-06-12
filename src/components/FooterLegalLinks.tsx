@@ -1,8 +1,11 @@
 import React from "react";
 import Button from "./Button";
 import styles from "../styles/components/FooterLegalLinksAndAgreementText.module.css";
+import { useNavigate } from "react-router-dom";
 
 const FooterLegalLinks: React.FC = () => {
+  const navigate = useNavigate();
+
   const openLink = () => {
     window.open(
       "https://company.gamehouse.com/privacy-statement",
@@ -22,7 +25,7 @@ const FooterLegalLinks: React.FC = () => {
       </Button>
       {" | "}
       <Button
-        onClick={() => openLink()}
+        onClick={() => navigate("/not-found")}
         variant="link"
         className={styles.footerLink}
       >
@@ -30,7 +33,7 @@ const FooterLegalLinks: React.FC = () => {
       </Button>
       {" | "}
       <Button
-        onClick={() => openLink()}
+        onClick={() => navigate("/not-found")}
         variant="link"
         className={styles.footerLink}
       >

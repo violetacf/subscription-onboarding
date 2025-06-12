@@ -1,22 +1,17 @@
 import React from "react";
 import Button from "./Button";
 import styles from "../styles/components/FooterLegalLinksAndAgreementText.module.css";
+import { useNavigate } from "react-router-dom";
 
 const AgreementText: React.FC = () => {
-  const openLink = () => {
-    window.open(
-      "https://company.gamehouse.com/privacy-statement",
-      "_blank",
-      "noopener,noreferrer"
-    );
-  };
+  const navigate = useNavigate();
 
   return (
     <div className={styles.agreementTextWrapper}>
       <p className={styles.agreementText}>
         By continuing, you agree to our{" "}
         <Button
-          onClick={() => openLink()}
+          onClick={() => navigate("/not-found")}
           variant="link"
           className={styles.agreementLink}
         >
@@ -24,7 +19,7 @@ const AgreementText: React.FC = () => {
         </Button>
         {" and "}
         <Button
-          onClick={() => openLink()}
+          onClick={() => navigate("/not-found")}
           variant="link"
           className={styles.agreementLink}
         >
