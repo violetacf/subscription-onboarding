@@ -1,4 +1,7 @@
 import React from "react";
+import styles from "../styles/components/RadioOption.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 interface RadioOptionProps {
   value: string;
@@ -17,42 +20,40 @@ const RadioOption: React.FC<RadioOptionProps> = ({
   name,
   disabled = false,
 }) => {
+  const handleClick = () => {
+    if (!disabled) {
+      onChange(value);
+    }
+  };
+
+  const handleInputChange = () => {
+    if (!disabled) {
+      onChange(value);
+    }
+  };
+
   return (
     <div
-      onClick={() => !disabled && onChange(value)}
-      style={{
-        border: `2px solid ${checked ? "blue" : "#ccc"}`,
-        borderRadius: "8px",
-        padding: "15px",
-        margin: "5px",
-        cursor: disabled ? "not-allowed" : "pointer",
-        opacity: disabled ? 0.6 : 1,
-        transition: "all 0.2s ease-in-out",
-        display: "flex",
-        alignItems: "flex-start",
-        gap: "10px",
-        flexBasis: "calc(50% - 10px)",
-        minWidth: "200px",
-        maxWidth: "350px",
-      }}
+      onClick={handleClick}
+      className={`${styles.radioOptionContainer} ${
+        checked ? styles.checked : ""
+      } ${disabled ? styles.disabled : ""}`}
     >
-      <label
-        style={{
-          cursor: disabled ? "not-allowed" : "pointer",
-          display: "flex",
-          alignItems: "flex-start",
-          width: "100%",
-        }}
-      >
+      <label className={styles.radioLabel}>
         <input
           type="radio"
           name={name}
           value={value}
           checked={checked}
-          onChange={() => onChange(value)}
+          onChange={handleInputChange}
           disabled={disabled}
-          style={{ marginTop: "5px", flexShrink: 0 }}
+          className={styles.radioInput}
         />
+        <div
+          className={`${styles.customRadio} ${checked ? styles.checked : ""}`}
+        >
+          {checked && <FontAwesomeIcon icon={faCheckCircle} />}
+        </div>
         <div>{label}</div>
       </label>
     </div>

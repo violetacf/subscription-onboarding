@@ -1,0 +1,95 @@
+.radioOptionContainer {
+  border: 3px solid transparent;
+  border-radius: 10px;
+  padding-bottom: 0;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  flex-basis: calc(50% - 10px);
+  min-width: 300px;
+  max-width: 350px;
+  background-clip: padding-box;
+  background-origin: border-box;
+  background-color: var(--color-purple-darker);
+}
+
+.radioOptionContainer.checked {
+  border: 3px solid transparent;
+  border-radius: 10px;
+
+  background-color: var(--color-purple-darker);
+
+  background-image: linear-gradient(
+      var(--color-purple-darker),
+      var(--color-purple-darker)
+    ),
+    linear-gradient(
+      to right,
+      rgb(234, 187, 158),
+      rgb(218, 120, 120),
+      rgb(188, 131, 177),
+      rgb(87, 154, 196)
+    );
+
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+}
+
+.radioOptionContainer.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background-color: var(--color-purple-darker);
+}
+
+.radioLabel {
+  cursor: inherit;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  & div h3 {
+    margin: 0;
+  }
+  & div p {
+    margin: 0;
+  }
+}
+
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.customRadio {
+  margin: 10px;
+  background-color: var(--color-purple-darker);
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease-in-out;
+  font-size: 36px;
+}
+
+.customRadio.checked {
+  background-color: transparent;
+  color: var(--color-light-green);
+  border-color: var(--color-light-green);
+}
+
+@media (max-width: 600px) {
+  .radioLabel {
+    display: flex;
+    align-items: center;
+  }
+
+  .customRadio {
+    align-self: center;
+  }
+}
