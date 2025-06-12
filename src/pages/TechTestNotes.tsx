@@ -64,6 +64,9 @@ export default function TechTestNotes() {
         <Button onClick={() => navigate("/congrats")} variant="primary">
           Congrats! You're now a subscriber!
         </Button>
+        <Button onClick={() => navigate("/not-found")} variant="primary">
+          Not Found
+        </Button>
       </div>
     </div>
   );
