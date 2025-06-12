@@ -1,11 +1,14 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import ConnectAccount from "./pages/ConnectAccount";
 import AccountVerification from "./pages/AccountVerification";
 import PlanSelection from "./pages/PlanSelection";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import TechTestNotes from "./pages/TechTestNotes";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+
+library.add(fas);
 
 function App() {
   return (
