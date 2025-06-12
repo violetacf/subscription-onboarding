@@ -1,4 +1,3 @@
-// src/components/VerificationCodeForm.tsx
 import React, { useState, useEffect } from "react";
 import CodeInput from "./CodeInput";
 import Button from "./Button";
@@ -97,7 +96,13 @@ const VerificationCodeForm: React.FC<VerificationCodeFormProps> = ({
   const isDisabled = loading || isPageLoading;
 
   return (
-    <div className={`${styles.container} ${className || ""}`}>
+    <form
+      className={`${styles.container} ${className || ""}`}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleVerifyCode();
+      }}
+    >
       <CodeInput
         length={6}
         onComplete={setCode}
@@ -119,6 +124,7 @@ const VerificationCodeForm: React.FC<VerificationCodeFormProps> = ({
         </Button>
       </div>
       <Button
+        type="submit"
         onClick={handleVerifyCode}
         disabled={isDisabled || code.length !== 6}
         variant="primary"
@@ -126,7 +132,7 @@ const VerificationCodeForm: React.FC<VerificationCodeFormProps> = ({
       >
         {loading ? "Verifying..." : "Verify"}
       </Button>
-    </div>
+    </form>
   );
 };
 

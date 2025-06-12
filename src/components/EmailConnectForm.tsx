@@ -49,7 +49,13 @@ const EmailConnectForm: React.FC<EmailConnectFormProps> = ({ onSuccess }) => {
   };
 
   return (
-    <div className={styles.formContainer}>
+    <form
+      className={styles.formContainer}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSendVerificationEmail();
+      }}
+    >
       <TextInput
         value={email}
         onChange={setEmail}
@@ -68,10 +74,11 @@ const EmailConnectForm: React.FC<EmailConnectFormProps> = ({ onSuccess }) => {
         onClick={handleSendVerificationEmail}
         disabled={loading}
         variant="primary"
+        type="submit"
       >
         {loading ? "Sending..." : "Connect"}
       </Button>
-    </div>
+    </form>
   );
 };
 
