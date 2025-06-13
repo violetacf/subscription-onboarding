@@ -1,3 +1,17 @@
 .subscriberHighlight {
   color: var(--color-yellow);
 }
+
+.backgroundAnimation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.congratsText {
+  padding-top: 100px;
+}

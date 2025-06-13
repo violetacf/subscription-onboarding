@@ -18,7 +18,7 @@ export default function TechTestNotes() {
           Organized the project structure with folders:
           <ul className={styles.subList}>
             <li>
-              <b>api/</b> for api calls
+              <b>api/</b> for API calls
             </li>
             <li>
               <b>components/</b> for components
@@ -35,9 +35,9 @@ export default function TechTestNotes() {
           Created mock routes in <code>App.tsx</code> for the subscription steps
           and Tech Test Notes page.
         </li>
-        <li>Added the server.js file and tested out the api in postman</li>
+        <li>Added the server.js file and tested out the API in Postman</li>
         <li>
-          Implemented api calls in ConnectAccount, AccountVerification,
+          Implemented API calls in ConnectAccount, AccountVerification,
           PlanSelection, SubscriptionSuccess and all the fields needed according
           to the requirements
         </li>

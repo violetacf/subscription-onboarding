@@ -1,4 +1,3 @@
-/* Container for the entire benefits list */
 .benefitsContainer {
   margin-top: 90px;
   display: flex;
@@ -45,6 +44,7 @@
 .benefitItem p {
   margin: 0;
   line-height: 1.4;
+  text-align: left;
 }
 
 @media (max-width: 768px) {

@@ -54,7 +54,7 @@ const RadioOption: React.FC<RadioOptionProps> = ({
         >
           {checked && <FontAwesomeIcon icon={faCheckCircle} />}
         </div>
-        <div>{label}</div>
+        {label}
       </label>
     </div>
   );

@@ -13,13 +13,6 @@
   gap: 10px;
 }
 
-.planContent {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border-radius: 10;
-}
-
 .planName {
   display: inline-block;
   width: auto;
@@ -68,8 +61,6 @@
   padding-bottom: 10pt;
   padding-top: 10pt;
   border: 0px solid transparent;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .cancelAnytime {
@@ -96,14 +87,6 @@
   color: var(--color-error);
 }
 
-/* .saveTag {
-  background-color: red;
-  width: 20px;
-  height: 20px;
-  position: relative;
-  margin-bottom: 0;
-} */
-
 .planCardContainer {
   position: relative;
 }
@@ -122,16 +105,13 @@
 }
 
 @media (max-width: 600px) {
-  .planContent {
-    flex-direction: row;
-    display: flex;
-  }
   .planName {
     font-size: 1.1rem;
+    text-align: left;
   }
 
   .planPrice {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 
   .planBilled {
@@ -144,18 +124,22 @@
 
   .planDetails {
     background-color: var(--color-purple-darkest);
+    width: 60%;
   }
 
   .hideOnBig {
     margin-top: 0;
     display: block;
     font-size: 0.7rem;
+    text-align: left;
+
     color: var(--gradient-color-4);
   }
   .planHeader {
     align-items: center;
     margin-top: 52px;
     margin-right: 5px;
+    width: 40%;
   }
 
   .saveTag {
