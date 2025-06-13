@@ -4,11 +4,7 @@ import RadioOption from "./RadioOption";
 import Button from "./Button";
 import styles from "../styles/components/SubscriptionPlanForm.module.css";
 import { formatCurrency } from "../utils/formatCurrency";
-
-interface DisplayProduct extends Product {
-  id: string;
-  name: string;
-}
+import { calculateDiscount } from "../utils/calculateDiscount";
 
 interface SubscriptionPlanFormProps {
   onPlanSelectedAndProceed: (selectedPlanId: string) => void;
@@ -43,18 +39,6 @@ const SubscriptionPlanForm: React.FC<SubscriptionPlanFormProps> = ({
     fetchProducts();
   }, []);
 
-  const productsArray: DisplayProduct[] = products
-    ? Object.keys(products).map((key) => {
-        const planDetails = products[key as keyof ProductsResponse];
-        const friendlyName = key.charAt(0).toUpperCase() + key.slice(1);
-        return {
-          id: key,
-          name: friendlyName,
-          ...planDetails,
-        };
-      })
-    : [];
-
   const handlePlanChange = (planId: string) => {
     setSelectedPlanId(planId);
     if (error) setError(null);
@@ -83,44 +67,50 @@ const SubscriptionPlanForm: React.FC<SubscriptionPlanFormProps> = ({
       {error && <p className={styles.errorText}>{error}</p>}{" "}
       {products && (
         <div className={styles.subscriptionPlans}>
-          {productsArray.map((plan) => (
-            <div key={plan.id} className={styles.planCardContainer}>
-              {plan.name !== "Monthly" && (
-                <div className={styles.saveTag}>Save 20%</div>
+          {Object.entries(products).map(([planId, plan]) => (
+            <div key={planId} className={styles.planCardContainer}>
+              {planId === "year" && (
+                <div className={styles.saveTag}>
+                  Save{" "}
+                  {calculateDiscount(
+                    Number(products.monthly.price),
+                    Number(plan.price)
+                  )}
+                  %
+                </div>
               )}
               <RadioOption
-                key={plan.id}
-                value={plan.id}
-                checked={selectedPlanId === plan.id}
+                key={planId}
+                value={planId}
+                checked={selectedPlanId === planId}
                 onChange={handlePlanChange}
                 name="plan"
                 disabled={isDisabled}
                 label={
-                  <div className={styles.planContent}>
+                  <>
                     <div className={styles.planHeader}>
-                      {plan.name !== "Monthly" && (
+                      {planId === "year" && (
                         <span className={styles.hideOnBig}>BEST VALUE</span>
                       )}
                       <h3 className={styles.planName}>
-                        {plan.name === "Monthly" ? "Monthly" : "Annual"}
+                        {planId === "monthly" ? "Monthly" : "Annual"}
                       </h3>
                     </div>
                     <div className={styles.planDetails}>
                       <p className={styles.planPrice}>
                         {formatCurrency(Number(plan.price), plan.currency)}
                         <span className={styles.per}>
-                          /{plan.name === "Monthly" ? "month" : "year"}
+                          /{planId === "monthly" ? "month" : "year"}
                         </span>
                       </p>
                       <p className={styles.planBilled}>
-                        Billed{" "}
-                        {plan.name === "Monthly" ? "monthly" : "annually"}
+                        Billed {planId === "monthly" ? "monthly" : "annually"}
                       </p>
                       <p className={styles.planTrial}>
                         {plan.trial_days}-day free trial
                       </p>
                     </div>
-                  </div>
+                  </>
                 }
               />
             </div>
