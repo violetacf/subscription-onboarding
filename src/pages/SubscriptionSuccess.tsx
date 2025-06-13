@@ -8,7 +8,7 @@ export default function SubscriptionSuccess() {
 
   return (
     <div>
-      <h2>
+      <h2 className={styles.congratsText}>
         Congrats! You're now a{" "}
         <span className={styles.subscriberHighlight}>subscriber</span>!
       </h2>
@@ -17,15 +17,11 @@ export default function SubscriptionSuccess() {
         src="https://lottie.host/bf15bc66-062d-4245-af75-ca96dec1ec56/O8CbcuDf0C.lottie"
         loop
         autoplay
+        className={styles.backgroundAnimation}
       />
       <Button onClick={() => navigate("/tech-test-notes")} variant="primary">
         View Tech Test Notes
       </Button>
-      <DotLottieReact
-        src="https://lottie.host/bf15bc66-062d-4245-af75-ca96dec1ec56/O8CbcuDf0C.lottie"
-        loop
-        autoplay
-      />
     </div>
   );
 }

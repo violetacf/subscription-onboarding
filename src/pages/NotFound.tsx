@@ -19,6 +19,7 @@ export default function NotFound() {
         src="https://lottie.host/288e2226-a7f4-4a80-8113-e5b9fb9a373e/63sGn1xykp.lottie"
         loop
         autoplay
+        className={styles.notFoundAnimation}
       />
     </div>
   );
