@@ -46,16 +46,14 @@ export default function AccountVerification() {
         </Button>
       </div>
 
-      <div className={styles.mainContentFlex}>
+      <div className={styles.mainContent}>
         <div className={styles.headingBlock}>
           <h1>Get Verified!</h1>
           <p>Enter the one time code we sent to:</p>
           {emailToDisplay ? (
             <p className={styles.emailToDisplay}>{emailToDisplay}</p>
           ) : (
-            <p style={{ textAlign: "center", color: "gray" }}>
-              Loading email...
-            </p>
+            <p className={styles.loadingText}>Loading email...</p>
           )}
         </div>
 

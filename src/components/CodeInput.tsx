@@ -1,4 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
+import {
+  isNumeric,
+  mergeDigitsToCode,
+  splitCodeToDigits,
+  isValidCode,
+} from "../utils/codeInputUtils";
+import styles from "../styles/components/CodeInput.module.css";
 
 interface CodeInputProps {
   length?: number;
@@ -19,33 +26,27 @@ const CodeInput: React.FC<CodeInputProps> = ({
   const inputRefs = useRef<HTMLInputElement[]>([]);
 
   useEffect(() => {
-    if (inputRefs.current[0]) {
-      inputRefs.current[0].focus();
-    }
+    inputRefs.current[0]?.focus();
   }, []);
 
+  const updateCodeDigits = (newDigits: string[]) => {
+    setCodeDigits(newDigits);
+    const code = mergeDigitsToCode(newDigits);
+    onChange?.(code);
+    if (isValidCode(code, length)) {
+      onComplete(code);
+    }
+  };
+
   const handleDigitChange = (index: number, value: string) => {
-    if (!/^\d*$/.test(value)) {
-      return;
-    }
+    if (!/^\d*$/.test(value)) return;
 
-    const newCodeDigits = [...codeDigits];
-    newCodeDigits[index] = value.slice(-1);
+    const newDigits = [...codeDigits];
+    newDigits[index] = value.slice(-1);
+    updateCodeDigits(newDigits);
 
-    setCodeDigits(newCodeDigits);
-
-    const fullCode = newCodeDigits.join("");
-
-    if (onChange) {
-      onChange(fullCode);
-    }
-
-    if (value && index < length - 1 && inputRefs.current[index + 1]) {
-      inputRefs.current[index + 1].focus();
-    }
-
-    if (fullCode.length === length && /^\d+$/.test(fullCode)) {
-      onComplete(fullCode);
+    if (value && index < length - 1) {
+      inputRefs.current[index + 1]?.focus();
     }
   };
 
@@ -55,15 +56,10 @@ const CodeInput: React.FC<CodeInputProps> = ({
   ) => {
     if (e.key === "Backspace" && !codeDigits[index] && index > 0) {
       e.preventDefault();
-      const newCodeDigits = [...codeDigits];
-      newCodeDigits[index - 1] = "";
-      setCodeDigits(newCodeDigits);
-      if (inputRefs.current[index - 1]) {
-        inputRefs.current[index - 1].focus();
-      }
-      if (onChange) {
-        onChange(newCodeDigits.join(""));
-      }
+      const newDigits = [...codeDigits];
+      newDigits[index - 1] = "";
+      updateCodeDigits(newDigits);
+      inputRefs.current[index - 1]?.focus();
     } else if (e.key === "ArrowRight" && index < length - 1) {
       inputRefs.current[index + 1]?.focus();
     } else if (e.key === "ArrowLeft" && index > 0) {
@@ -71,8 +67,18 @@ const CodeInput: React.FC<CodeInputProps> = ({
     }
   };
 
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pasted = e.clipboardData.getData("Text").trim();
+    if (!isNumeric(pasted)) return;
+    const digits = splitCodeToDigits(pasted, length);
+    updateCodeDigits(digits);
+    const nextIndex = digits.findIndex((d) => d === "");
+    inputRefs.current[nextIndex === -1 ? length - 1 : nextIndex]?.focus();
+  };
+
   return (
-    <div style={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+    <div className={styles.codeInputContainer}>
       {Array.from({ length }).map((_, index) => (
         <input
           key={index}
@@ -85,15 +91,9 @@ const CodeInput: React.FC<CodeInputProps> = ({
           value={codeDigits[index]}
           onChange={(e) => handleDigitChange(index, e.target.value)}
           onKeyDown={(e) => handleKeyDown(index, e)}
+          onPaste={handlePaste}
           disabled={disabled}
-          style={{
-            width: "40px",
-            height: "40px",
-            textAlign: "center",
-            fontSize: "1.2em",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
+          className={styles.codeInput}
         />
       ))}
     </div>

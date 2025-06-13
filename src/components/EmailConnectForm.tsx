@@ -7,9 +7,13 @@ import styles from "../styles/components/EmailConnectForm.module.css";
 
 interface EmailConnectFormProps {
   onSuccess: (email: string) => void;
+  className?: string;
 }
 
-const EmailConnectForm: React.FC<EmailConnectFormProps> = ({ onSuccess }) => {
+const EmailConnectForm: React.FC<EmailConnectFormProps> = ({
+  onSuccess,
+  className,
+}) => {
   const [email, setEmail] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -50,7 +54,7 @@ const EmailConnectForm: React.FC<EmailConnectFormProps> = ({ onSuccess }) => {
 
   return (
     <form
-      className={styles.formContainer}
+      className={`${styles.formContainer} ${className || ""}`}
       onSubmit={(e) => {
         e.preventDefault();
         handleSendVerificationEmail();

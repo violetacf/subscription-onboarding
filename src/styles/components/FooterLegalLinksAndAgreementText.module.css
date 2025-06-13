@@ -14,10 +14,6 @@
 }
 
 @media (max-width: 600px) {
-  .footer {
-    font-size: 0.5em;
-  }
-
   .hideOnSmall {
     display: none;
   }
@@ -26,15 +22,10 @@
 .agreementTextWrapper {
   width: 100%;
   text-align: center;
+  margin-top: 70pt;
+  margin-bottom: 20pt;
 }
 
 .agreementLink {
   display: contents;
-}
-
-@media (max-width: 600px) {
-  .agreementText {
-    font-size: 0.5em;
-    gap: 2px;
-  }
 }

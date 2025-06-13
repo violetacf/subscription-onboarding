@@ -19,7 +19,7 @@ export default function ConnectAccount() {
       </div>
 
       <div className={styles.benefitsWrapper}>
-        <Benefits />
+        <Benefits className={styles.benefitsWrapper} />
       </div>
 
       <div className={styles.emailFormWrapper}>

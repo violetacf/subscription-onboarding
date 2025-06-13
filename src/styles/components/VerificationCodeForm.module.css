@@ -5,13 +5,14 @@
 
 .errorText {
   color: var(--color-error);
+  font-size: 1rem;
 }
 
 .resendSection {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 20pt;
+  margin-bottom: 20pt;
 }
 
 .resendButton {

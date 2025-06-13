@@ -1,44 +1,39 @@
 .container {
   display: flex;
   flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
-.connectHeading,
-.benefitsWrapper,
-.emailFormWrapper,
-.agreementTextWrapper {
-  flex: 1 1 calc(50% - 15px);
+.connectHeading {
+  flex: 1 1 calc(50% - 1rem);
   box-sizing: border-box;
-  padding: 20px;
-  align-content: end;
+  padding: 1.25rem;
+  order: 2;
 }
 
 .benefitsWrapper {
+  flex: 1 1 calc(50% - 1rem);
+  box-sizing: border-box;
+  justify-content: center;
   order: 1;
-  align-content: end;
-  & div {
-    & p {
-      margin: 0.3em;
-    }
-  }
 }
-.connectHeading {
-  order: 2;
-  align-content: flex-start;
-}
-.agreementTextWrapper {
-  order: 3;
-  align-content: end;
-}
+
 .emailFormWrapper {
+  flex: 1 1 calc(50% - 1rem);
+  box-sizing: border-box;
+  padding: 1.25rem;
   order: 4;
 }
 
-@media (max-width: 767px) {
+.agreementTextWrapper {
+  flex: 1 1 calc(50% - 1rem);
+  order: 3;
+}
+
+@media (orientation: portrait) {
   .container {
     flex-direction: column;
   }
-
   .connectHeading {
     order: 1;
   }

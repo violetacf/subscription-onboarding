@@ -1,9 +1,10 @@
 .benefitsContainer {
-  margin-top: 90px;
+  align-self: center;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 100%;
+  gap: 8pt;
+  max-width: 400pt;
+  margin-top: 20pt;
 }
 
 .benefitItem {
@@ -22,6 +23,7 @@
   align-items: center;
   flex-shrink: 0;
 }
+
 .checkCircleIcon .benefitIcon {
   font-size: 1.3em;
   color: var(--color-white);
@@ -47,8 +49,24 @@
   text-align: left;
 }
 
-@media (max-width: 768px) {
+/* Portrait - default small screens (phones) */
+@media (orientation: portrait) {
   .benefitsContainer {
-    margin-top: 0;
+    max-width: 100%;
   }
+}
+
+/* Portrait - larger phones/tablets */
+@media (orientation: portrait) and (min-width: 600px) {
+  .benefitsContainer {
+    max-width: 100%;
+  }
+}
+
+/* Landscape - default */
+@media (orientation: landscape) {
+}
+
+/* Landscape - larger screens (tablets, laptops) */
+@media (orientation: landscape) and (min-width: 1024px) {
 }

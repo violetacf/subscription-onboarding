@@ -40,9 +40,6 @@
 }
 
 .radioLabel {
-  /* display: flex;
-  flex-direction: column;
-  width: 100%; */
   cursor: inherit;
   align-items: flex-start;
   width: 100%;
@@ -95,5 +92,10 @@
 
   .customRadio {
     align-self: center;
+    margin: 5pt;
+    width: 20pt;
+    height: 20pt;
+    border: 1pt solid var(--color-white);
+    font-size: 20pt;
   }
 }

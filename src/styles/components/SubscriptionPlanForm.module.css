@@ -85,6 +85,7 @@
 
 .errorText {
   color: var(--color-error);
+  font-size: 1rem;
 }
 
 .planCardContainer {
@@ -99,8 +100,8 @@
   font-weight: bold;
   border-radius: 6px 6px 0 0;
   position: absolute;
-  top: -17px;
-  right: 20px;
+  top: -10pt;
+  right: 20pt;
   white-space: nowrap;
 }
 
@@ -137,13 +138,12 @@
   }
   .planHeader {
     align-items: center;
-    margin-top: 52px;
-    margin-right: 5px;
     width: 40%;
+    margin-left: 5pt;
   }
 
   .saveTag {
     font-size: 0.6rem;
-    top: -11px;
+    top: -6pt;
   }
 }
